@@ -1,9 +1,9 @@
-#Project Setup
+# Project Setup Commands
 1. npm i
 2. node server.js
 3. npm start
 
-#Tasks Completed
+# Tasks Completed
 ### Create a responsive single page application using React.js frontend framework. 
 1. Use index.html as the basis
 2. NB! Index.html has deficiencies
