@@ -1,9 +1,9 @@
 # browser-session-form-saveNupdate
-Tasks:
-1. Created a responsive single-page application using React.js frontend framework.
-  a. Used index.html as the basis
-  b. NB! Index.html has deficiencies
-  c. Made it look visually good in a reasonable time
+#Tasks:
+# Created a responsive single-page application using React.js frontend framework.
+  1. Used index.html as the basis
+  2. NB! Index.html has deficiencies
+  3. Made it look visually good in a reasonable time
 3. "Sectors" selectbox:
   a. Added all the entries from the "Sectors" selectbox to the database 
   b. Composed the "Sectors" selectbox using data from the database
