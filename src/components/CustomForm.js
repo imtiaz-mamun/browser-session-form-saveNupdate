@@ -91,13 +91,11 @@ const CustomForm = ({ onSubmit }) => {
 		    if (!response.ok) {
 		      throw new Error(`HTTP error! Status: ${response.status}`);
 		    }
-		    console.log(response);
+		    console.log(response.json());
 		    const data = await response.json();
 		    setSectors(data.sectors);
 		  } catch (error) {
 			console.error('Error fetching data:', error.message);
-			console.error('Response status:', error.response.status);
-			console.error('Response content:', await error.response.text());
 		  }
 		};
 
