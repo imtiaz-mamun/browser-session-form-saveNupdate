@@ -1,6 +1,7 @@
 # Project Setup Commands
-1. npm i
-2. npm start
+1. Clone or Download the project
+2. npm i
+3. npm start
 
 # Tasks Completed
 ### Create a responsive single page application using React.js frontend framework. 
