@@ -8,7 +8,8 @@ const PORT = process.env.PORT || 5555;
 app.use(cors());
 app.use(express.json());
 
-const db = new sqlite3.Database(':memory:');
+//const db = new sqlite3.Database(':memory:');
+const db = new sqlite3.Database('database.db');
 
 db.run(`
   CREATE TABLE IF NOT EXISTS users (
