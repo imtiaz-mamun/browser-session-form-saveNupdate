@@ -94,7 +94,9 @@ const CustomForm = ({ onSubmit }) => {
 		    const data = await response.json();
 		    setSectors(data.sectors);
 		  } catch (error) {
-		    console.error('Error fetching data:', error.message);
+			console.error('Error fetching data:', error.message);
+			console.error('Response status:', error.response.status);
+			console.error('Response content:', await error.response.text());
 		  }
 		};
 
