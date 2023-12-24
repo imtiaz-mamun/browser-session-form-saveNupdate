@@ -4,11 +4,11 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5555;
-const corsOptions = {
-  origin: '*',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: '*',
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+// };
 app.use(cors());
 // app.use(cors(corsOptions));
 // app.use((req, res, next) => {
@@ -19,8 +19,8 @@ app.use(cors());
 // });
 app.use(express.json());
 
-const db = new sqlite3.Database(':memory:');
-// const db = new sqlite3.Database('database.db');
+// const db = new sqlite3.Database(':memory:');
+const db = new sqlite3.Database('database.db');
 
 db.run(`
   CREATE TABLE IF NOT EXISTS users (
