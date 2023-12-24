@@ -17,7 +17,7 @@ const updateDataFun = async (id, name, sectors, agree) => {
     }).then(async(result) => {
       if (result.isConfirmed) {
 		try {
-			const response = await fetch('/api/updateFormData', {
+			const response = await fetch('http://localhost:5555/api/updateFormData', {
 				method: 'POST',
 				headers: {
 				  'Content-Type': 'application/json',
@@ -27,9 +27,10 @@ const updateDataFun = async (id, name, sectors, agree) => {
 			if (!response.ok) {
 				throw new Error('Failed to update data to the server');
 			}
-			const data = await response.json();
+			else{
 		      	toast.info('Data Update Succesfully!!!');
 				alert('Data Update Succesfully!!!\nFor New Entry Please Refresh This Page');
+			}
 		} catch (error) {
 			console.error(error);
 			alert('Failed to update data');
@@ -52,7 +53,7 @@ const CustomForm = ({ onSubmit }) => {
 	    const sessionData =  getSession();
 	    if(!sessionData){
 	    	try {
-		      const response = await fetch('/api/saveFormData', {
+		      const response = await fetch('http://localhost:5555/api/saveFormData', {
 		        method: 'POST',
 		        headers: {
 		          'Content-Type': 'application/json',
@@ -62,9 +63,11 @@ const CustomForm = ({ onSubmit }) => {
 		      if (!response.ok) {
 		        throw new Error('Failed to save data to the server');
 		      }
+		      else{
+		      	toast.success('Data Saved Succesfully!!!');
+		      	alert('Data Saved Succesfully!!!\n\nUntil this browser tab is refreshed or closed you can update this data\n\nFor New Entry Please Refresh This Page');
+		      }
 		      const data = await response.json();
-		      toast.success('Data Saved Succesfully!!!');
-		      alert('Data Saved Succesfully!!!\n\nUntil this browser tab is refreshed or closed you can update this data\n\nFor New Entry Please Refresh This Page');
 		      onSubmit(data);
 		      // Redirect to the ViewData page after form submission
 		      // navigate('/view-data'); // Change this line
@@ -81,7 +84,7 @@ const CustomForm = ({ onSubmit }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 		  try {
-		    const response = await fetch('/api/sectors', {
+		    const response = await fetch('http://localhost:5555/api/sectors', {
 		      method: 'GET',
 		      headers: {
 		        'Content-Type': 'application/json',
@@ -91,17 +94,10 @@ const CustomForm = ({ onSubmit }) => {
 		    if (!response.ok) {
 		      throw new Error(`HTTP error! Status: ${response.status}`);
 		    }
-		    const data = await response.text(); // Get the raw response as text
-		    if (data.trim() !== '') {
-			setSectors(JSON.parse(data));
-		    } else {
-			console.warn('Empty response received');
-		    }
-		    // console.log(response.json());
-		    // const data = await response.json();
-		    // setSectors(data.sectors);
+		    const data = await response.json();
+		    setSectors(data.sectors);
 		  } catch (error) {
-			console.error('Error fetching data:', error.message);
+		    console.error('Error fetching data:', error.message);
 		  }
 		};
 
