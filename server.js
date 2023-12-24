@@ -4,8 +4,11 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5555;
-
-app.use(cors());
+const corsOptions = {
+  origin: 'https://browser-session-form-save-nupdate-29h9k0715.vercel.app', 
+};
+//app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 //const db = new sqlite3.Database(':memory:');
