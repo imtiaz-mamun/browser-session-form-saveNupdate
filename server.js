@@ -19,8 +19,8 @@ app.use(cors());
 // });
 app.use(express.json());
 
-// const db = new sqlite3.Database(':memory:');
-const db = new sqlite3.Database('database.db');
+const db = new sqlite3.Database(':memory:');
+// const db = new sqlite3.Database('database.db');
 
 db.run(`
   CREATE TABLE IF NOT EXISTS users (
@@ -166,7 +166,12 @@ app.get('/api/sectors', (req, res) => {
       res.status(500).json({ error: err.message });
       return;
     }
-    res.json({ sectors: rows });
+    if(rows.length>0){
+      res.json({ sectors: rows });
+    }
+    else{
+      res.json({ sectors: "No Data Found" });
+    }
   });
 });
 app.post('/api/updateFormData', (req, res) => {
