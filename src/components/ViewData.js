@@ -6,7 +6,7 @@ const ViewData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5555/api/getAllData');
+        const response = await fetch('https://browser-session-form-save-nupdate-29h9k0715.vercel.app/api/getAllData');
 
         if (!response.ok) {
           throw new Error('Failed to fetch data from the server');
