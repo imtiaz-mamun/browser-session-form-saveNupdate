@@ -91,9 +91,15 @@ const CustomForm = ({ onSubmit }) => {
 		    if (!response.ok) {
 		      throw new Error(`HTTP error! Status: ${response.status}`);
 		    }
-		    console.log(response.json());
-		    const data = await response.json();
-		    setSectors(data.sectors);
+		    const data = await response.text(); // Get the raw response as text
+		    if (data.trim() !== '') {
+			setSectors(JSON.parse(data));
+		    } else {
+			console.warn('Empty response received');
+		    }
+		    // console.log(response.json());
+		    // const data = await response.json();
+		    // setSectors(data.sectors);
 		  } catch (error) {
 			console.error('Error fetching data:', error.message);
 		  }
