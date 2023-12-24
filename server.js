@@ -19,8 +19,8 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 
-//const db = new sqlite3.Database(':memory:');
-const db = new sqlite3.Database('database.db');
+const db = new sqlite3.Database(':memory:');
+// const db = new sqlite3.Database('database.db');
 
 db.run(`
   CREATE TABLE IF NOT EXISTS users (
