@@ -17,7 +17,7 @@ const updateDataFun = async (id, name, sectors, agree) => {
     }).then(async(result) => {
       if (result.isConfirmed) {
 		try {
-			const response = await fetch('https://browser-session-form-save-nupdate-29h9k0715.vercel.app/api/updateFormData', {
+			const response = await fetch('/api/updateFormData', {
 				method: 'POST',
 				headers: {
 				  'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const CustomForm = ({ onSubmit }) => {
 	    const sessionData =  getSession();
 	    if(!sessionData){
 	    	try {
-		      const response = await fetch('https://browser-session-form-save-nupdate-29h9k0715.vercel.app/api/saveFormData', {
+		      const response = await fetch('/api/saveFormData', {
 		        method: 'POST',
 		        headers: {
 		          'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const CustomForm = ({ onSubmit }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 		  try {
-		    const response = await fetch('https://browser-session-form-save-nupdate-29h9k0715.vercel.app/api/sectors', {
+		    const response = await fetch('/api/sectors', {
 		      method: 'GET',
 		      headers: {
 		        'Content-Type': 'application/json',
