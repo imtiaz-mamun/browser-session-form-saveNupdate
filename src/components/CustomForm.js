@@ -27,10 +27,9 @@ const updateDataFun = async (id, name, sectors, agree) => {
 			if (!response.ok) {
 				throw new Error('Failed to update data to the server');
 			}
-			else{
+			const data = await response.json();
 		      	toast.info('Data Update Succesfully!!!');
 				alert('Data Update Succesfully!!!\nFor New Entry Please Refresh This Page');
-			}
 		} catch (error) {
 			console.error(error);
 			alert('Failed to update data');
@@ -63,11 +62,9 @@ const CustomForm = ({ onSubmit }) => {
 		      if (!response.ok) {
 		        throw new Error('Failed to save data to the server');
 		      }
-		      else{
-		      	toast.success('Data Saved Succesfully!!!');
-		      	alert('Data Saved Succesfully!!!\n\nUntil this browser tab is refreshed or closed you can update this data\n\nFor New Entry Please Refresh This Page');
-		      }
 		      const data = await response.json();
+		      toast.success('Data Saved Succesfully!!!');
+		      alert('Data Saved Succesfully!!!\n\nUntil this browser tab is refreshed or closed you can update this data\n\nFor New Entry Please Refresh This Page');
 		      onSubmit(data);
 		      // Redirect to the ViewData page after form submission
 		      // navigate('/view-data'); // Change this line
